@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}home.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/home.css" %}{% endblock %}
+
+{% block content %}
+
+<div id="content_home">
+
+    <div id="homeimg">
+        <a href="/"><img src="{% static 'img/main.jpg' %}" style="height:256px;"/></a>
+        <h4 style="margin: 0;">카카오페이지 ver.웹서비스프로그래밍_운영자 Model</h4>
+    </div>
+
+    <hr style="margin: 5px 0;">
+
+    <h2>Select Job</h2>
+
+    <table id="applist">
+        <tr>
+        <td><b><i><a href="{% url 'bookmark:index' %}">E-book</a></i><b></td>
+        <td>E-book platform update</td>
+        <td class="Edit"><i><a href="{% url 'bookmark:add' %}">Add</a></i></td>
+        <td class="Edit"><i><a href="{% url 'bookmark:change' %}">Change</a></i></td>
+        </tr>
+
+        <tr>
+        <td><b><i><a href="{% url 'blog:index' %}">Music</a></i><b></td>
+        <td>Music platform update</td>
+        <td class="Edit"><i><a href="{% url 'blog:add' %}">Add</a></i></td>
+        <td class="Edit"><i><a href="{% url 'blog:change' %}">Change</a></i></td>
+        </tr>
+
+        <tr>
+        <td><b><i><a href="{% url 'photo:index' %}">웹툰/소설</a></i><b></td>
+        <td>웹툰/소설 platform update</td>
+        <td class="Edit"><i><a href="{% url 'photo:album_add' %}">Add</a></i></td>
+        <td class="Edit"><i><a href="{% url 'photo:album_change' %}">Change</a></i></td>
+        </tr>
+    </table>
+</div>
+{% endblock content %}
+
+{% block footer %}
+<div id="footer">
+    &copy; IM 2018
+</div>
+{% endblock footer %}

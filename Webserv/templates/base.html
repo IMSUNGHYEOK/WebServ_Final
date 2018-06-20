@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<title>{% block title %}Kakao for WebServiceProgramming{% endblock %}</title>
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "css/base.css" %}{% endblock %}" />
+<link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}" />
+
+</head>
+
+<body>
+
+<div id="header">
+    <h2 class="maintitle">Kakao for WebServiceProgramming</h2>
+    {% if user.is_active %}
+    <h4 class="welcome">Welcome,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong> /
+                <a href="{% url 'password_change' %}">Change Password</a> /
+                <a href="{% url 'logout' %}">Logout</a>
+    </h4>
+    {% else %}
+    <h4 class="welcome">Welcome, Anonymous /
+                <a href="{% url 'login' %}">Login</a> /
+                <a href="{% url 'register' %}">Register</a>
+    </h4>
+    {% endif %}
+</div>
+
+<div id="menu">
+    <li><a href="{% url 'home' %}">메인</a></li>
+    <li><a href="{% url 'photo:index' %}">플랫폼</a></li>
+    <li><a href="{% url 'blog:index' %}">공지사항</a></li>
+    <li><a href="{% url 'bookmark:index' %}">Bookmark</a></li>
+
+    <li>추가-Mode&bigtriangledown;
+        <ul>
+            <li><a href="{% url 'bookmark:add' %}">Bookmark 추가</a></li>
+            <li><a href="{% url 'blog:add' %}">공지사항 추가</a></li>
+            <li><a href="{% url 'photo:album_add' %}">플랫폼 추가</a></li>
+            <li><a href="{% url 'photo:photo_add' %}">작품 추가</a></li>
+        </ul>
+    </li>
+    <li>수정-Mode&bigtriangledown;
+        <ul>
+            <li><a href="{% url 'bookmark:change' %}">Bookmark 변경</a></li>
+            <li><a href="{% url 'blog:change' %}">공지사항 변경</a></li>
+            <li><a href="{% url 'photo:album_change' %}">플랫폼 변경</a></li>
+            <li><a href="{% url 'photo:photo_change' %}">작품 변경</a></li>
+        </ul>
+    </li>
+
+    <li><a href="{% url 'blog:post_archive' %}">아카이브</a></li>
+    <li><a href="{% url 'blog:search' %}">검색</a></li>
+    <li><a href="{% url 'admin:index' %}">마이페이지</a></li>
+</div>
+
+{% block content %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+</body>
+</html>
